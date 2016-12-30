@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="278" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未连接" translatesAutoresizingMaskIntoConstraints="NO" id="RNI-Dl-Hwj">
+                    <rect key="frame" x="0.0" y="0.0" width="278" height="90"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="感叹号" translatesAutoresizingMaskIntoConstraints="NO" id="hqo-vT-zTF">
+                    <rect key="frame" x="44" y="33" width="4" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="6eC-Bn-bGr"/>
+                        <constraint firstAttribute="width" constant="4" id="HAs-HL-jjQ"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RNI-Dl-Hwj" secondAttribute="trailing" id="9mt-Mh-w04"/>
+                <constraint firstItem="hqo-vT-zTF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="EGy-uj-zkS"/>
+                <constraint firstItem="hqo-vT-zTF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ara-ul-2Bh"/>
+                <constraint firstItem="RNI-Dl-Hwj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bfS-Js-9f7"/>
+                <constraint firstAttribute="bottom" secondItem="RNI-Dl-Hwj" secondAttribute="bottom" id="pxB-jh-wJJ"/>
+                <constraint firstItem="RNI-Dl-Hwj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="y0x-nI-EMf"/>
+                <constraint firstItem="hqo-vT-zTF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="43" id="yDU-nd-hCZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="yDU-nd-hCZ"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="330" y="-53"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="感叹号" width="4" height="24"/>
+        <image name="未连接" width="278" height="90"/>
+    </resources>
+</document>
