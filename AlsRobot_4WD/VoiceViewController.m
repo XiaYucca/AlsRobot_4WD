@@ -10,9 +10,6 @@
 #import "ExperienceViewSplit.h"
 
 
-#define backBtnTag 10
-#define setBtnTag 20
-
 @interface VoiceViewController ()
 
 @property(nonatomic , strong)NSTimer *timer;
@@ -27,18 +24,11 @@
 @implementation VoiceViewController
 
 -(void)viewDidLoad
-{
+{   [super viewDidLoad];
     [self setupView];
 }
 -(void)setupView
 {
-    UIButton *btn = [self.view viewWithTag:backBtnTag];
-    UIButton *stn = [self.view viewWithTag: setBtnTag];
-    
-    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [stn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self loadTheme];
     UIButton *ytn = [self.view viewWithTag:100];
     [ytn addTarget:self action:@selector(voiceStart) forControlEvents:UIControlEventTouchDown];
     [ytn addTarget:self action:@selector(voiceEnd) forControlEvents:UIControlEventTouchUpInside];
@@ -89,37 +79,37 @@
 
 }
 
--(void)loadTheme
-{
-    
-    ExperienceViewSplit *EV= [ExperienceViewSplit experienceProgressView];
-    
-    EV.experienceProgress = 0.5;
-    
-    EV.batteryProgress = 0.15;
-    
-    UIView *exView= [self.view viewWithTag:1000];
-    exView.backgroundColor = [UIColor clearColor];
-    [exView addSubview: EV];
-}
+//-(void)loadTheme
+//{
+//    
+//    ExperienceViewSplit *EV= [ExperienceViewSplit experienceProgressView];
+//    
+//    EV.experienceProgress = 0.5;
+//    
+//    EV.batteryProgress = 0.15;
+//    
+//    UIView *exView= [self.view viewWithTag:1000];
+//    exView.backgroundColor = [UIColor clearColor];
+//    [exView addSubview: EV];
+//}
+//
 
 
 
-
--(void)btnClick:(UIButton *)sender
-{
-    switch (sender.tag) {
-        case backBtnTag:
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-            break;
-            
-        case setBtnTag:
-            
-            break;
-    }
-}
+//-(void)btnClick:(UIButton *)sender
+//{
+//    switch (sender.tag) {
+//        case backBtnTag:
+//            
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//            
+//            break;
+//            
+//        case setBtnTag:
+//            
+//            break;
+//    }
+//}
 
 
 @end

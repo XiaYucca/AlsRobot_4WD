@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExpressionViewController : UIViewController
+@interface ExpressionViewController : RootViewController
 
 @end

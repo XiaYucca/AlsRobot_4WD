@@ -87,7 +87,6 @@
 -(void) read:(CBPeripheral *)peripheral;
 -(void) notify:(CBPeripheral *)peripheral on:(BOOL)on;
 
-
 -(void) printPeripheralInfo:(CBPeripheral*)peripheral;
 
 -(void) notification:(int)serviceUUID characteristicUUID:(int)characteristicUUID p:(CBPeripheral *)p on:(BOOL)on;
@@ -104,3 +103,11 @@
 -(void) readValue: (int)serviceUUID characteristicUUID:(int)characteristicUUID p:(CBPeripheral *)p;
 
 @end
+
+
+
+
+
+
+
+

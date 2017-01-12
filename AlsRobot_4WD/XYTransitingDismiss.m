@@ -7,8 +7,14 @@
 //
 
 #import "XYTransitingDismiss.h"
+#import "HomeViewController.h"
 
 @implementation XYTransitingDismiss
+{
+    UIViewController *_formViewController ;
+    UIViewController *_toViewController;
+}
+
 
 -(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -52,8 +58,11 @@
     
     UIView *generalContentView = [transitionContext containerView];
     
-    UIView *fromView = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view;
-    UIView * toView = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey].view;
+    _formViewController =  [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    _toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
+    UIView *fromView = _formViewController.view;
+    UIView * toView = _toViewController.view;
     
     NSLog(@"%@ +++++++++++%@",[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey],[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey]);
     
@@ -88,13 +97,23 @@
         }completion:^(BOOL finished){
             
             //  [self removeFromSuperview];
-            [fromView removeFromSuperview];
+ 
+          //  [fromView removeFromSuperview];
             
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
             
         }];
     }];
 }
+-(void)animationEnded:(BOOL)transitionCompleted{
+    
+    if (_toViewController.class == [HomeViewController class]) {
+        [((HomeViewController *)_toViewController) pressAnimationShow:nil];
+    }
+    
+    NSLog(@"------%@",[_toViewController class]);
+}
+
 
 
 @end

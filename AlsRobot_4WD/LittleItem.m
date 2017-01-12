@@ -11,6 +11,10 @@
 #define defalutColor  [UIColor colorWithRed:0x00/255.0 green: 0x80/255.0 blue:0xdd/255.0 alpha:1]
 #define selectColor  [UIColor colorWithRed:0xff/255.0 green: 0x8b/255.0 blue:0x98/255.0 alpha:1]
 
+//
+//#define defalutColor  [UIColor lightGrayColor]
+//#define selectColor   [UIColor colorWithRed:0x00/255.0 green: 0x80/255.0 blue:0xdd/255.0 alpha:1]
+
 @implementation LittleItem
 
 
@@ -18,8 +22,6 @@
 -(void)setSetOn:(BOOL)setOn
 {
     if (_setOn != setOn) {
-        
-       
         
         _setOn = setOn;
         _setOn ?  [self setBackgroundColor:selectColor]:[self setBackgroundColor:defalutColor];

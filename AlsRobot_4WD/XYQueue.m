@@ -37,15 +37,15 @@
 }
 
 
-//管理生命周期
+
 -(void)push:(id)obj
 {
     if(push(self.queue,(__bridge void*)obj))
     {
-        NSLog(@"添加成功 %@",obj);
+       // NSLog(@"添加成功 %@",obj);
     }
 }
-
+//管理生命周期
 -(BOOL)push:(id)obj withPolicy:(queue_AssociationPolicy) policy
 {
     if (!isFull(self.queue) )
@@ -66,13 +66,13 @@
 {
     void* obj_c = pop(self.queue);
     id obj =  (__bridge id)obj_c;
-    NSLog(@" pop ---> %@",obj);
+ //   NSLog(@" pop ---> %@",obj);
     return obj;
 }
 
 -(id)popWithPolicy
 {
-    if (! isEmpty(self.queue) )
+    if (! isEmpty(self.queue))
     {
         void *dataIndex = pop(self.queue);
         

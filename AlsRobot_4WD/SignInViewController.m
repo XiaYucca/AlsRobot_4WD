@@ -51,7 +51,12 @@
      }
         
     }];
-    CGPoint p =  CGPointMake(view.center.x, view.center.y - 15);
+    
+    UIView *viewback = [self.view viewWithTag:80];
+    float x = CGRectGetMinX(viewback.frame);
+    float y = CGRectGetMinY(viewback.frame);
+    
+    CGPoint p =  CGPointMake(view.center.x+x, view.center.y+y - 15);
     
     return p;
     

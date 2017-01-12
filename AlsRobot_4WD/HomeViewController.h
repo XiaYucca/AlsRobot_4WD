@@ -10,4 +10,7 @@
 
 @interface HomeViewController : RootViewController
 
+
+-(void)pressAnimationShow:(void(^)(void))compliment;
+-(void)pressAnimationHide:(void(^)(void))compliment;
 @end

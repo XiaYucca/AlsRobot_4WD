@@ -16,7 +16,7 @@
 #define backBtnTag 10
 #define setBtnTag 20
 
-#define STEERINGWHEEL_GAT 1010
+#define STEERINGWHEEL_GAT 1010   
 
 #define LABLE_FIRST_TAG 101
 #define LABLE_SECOND_TAG 102
@@ -31,6 +31,9 @@
 
 @implementation GravityViewController
 
+-(void)leftButtonClick{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)viewDidLoad
 {

@@ -33,7 +33,7 @@
 //    [self.setingView addSubview:_setV];
 //    
 //    self.setingView.backgroundColor = [UIColor clearColor];
-    [self loadTheme];
+  //  [self loadTheme];
 }
 -(void)loadTheme
 {

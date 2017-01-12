@@ -11,6 +11,8 @@
 
 #import "XYQueue.h"
 
+#import "NSMutableArray+Queue.h"
+
 @interface MusicProgressView ()<UIGestureRecognizerDelegate>
 @property (nonatomic ,strong)CAGradientLayer *gradientLayer;
 
@@ -31,6 +33,8 @@
 @property (nonatomic ,copy) void(^stopCallBack)(void);
 @property (nonatomic ,copy) void(^forwardCallback)(void);
 @property (nonatomic ,copy) void(^backwardCallback)(void);
+
+@property (nonatomic ,strong)NSMutableArray *queueArr;
 
 
 
@@ -54,8 +58,9 @@
         }else{
         return NO;
     }
-
 }
+
+
 
 - (IBAction)panGestClick:(UIPanGestureRecognizer *)sender {
     static CGFloat orgionX;
@@ -157,18 +162,32 @@
 {
     
 
-    [self setCustomerColor];
+//    [self setCustomerColor];
     [_clickItem setDisableAnimation:YES];
 
+}
+-(void)drawRect:(CGRect)rect{
+
+
+      [self setCustomerColor];
 }
 
 -(void)setCustomerColor
 {
     //初始化渐变层
+//    NSLog(@"()()()%lf",CGRectGetWidth(self.itemBack.frame));
+
+    CGFloat w = CGRectGetWidth(self.itemBack.frame);
+    CGFloat h = CGRectGetHeight(self.itemBack.frame);
     self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.frame = _itemBack.bounds;
-    self.gradientLayer.cornerRadius = 3;
+    
+    self.gradientLayer.frame = CGRectMake(0, 0, w, h+2);
+    self.gradientLayer.cornerRadius = h*0.5;
     self.gradientLayer.masksToBounds = YES;
+    
+    _itemBack.layer.cornerRadius = h*0.5;
+    _itemBack.layer.masksToBounds = YES;
+    
     
     [_itemBack.layer addSublayer:self.gradientLayer];
     
@@ -187,18 +206,27 @@
     self.gradientLayer.locations = @[[NSNumber numberWithFloat:(self.value * 0.5)] ,[NSNumber numberWithFloat:(self.value)],@(1.0f)];
     
     //定时器
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.25f
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2f
                                                   target:self
                                                 selector:@selector(TimerEvent)
                                                 userInfo:nil
                                                  repeats:YES];
     
-    self.que = [XYQueue xyQueueWithQueSize:4];
+//    self.que = [XYQueue xyQueueWithQueSize:4];
+//    
+//    [self.que push:(__bridge id)[UIColor grayColor].CGColor];
+//    [self.que push:(__bridge id)[UIColor lightGrayColor].CGColor];
+//    [self.que push:(__bridge id)[UIColor whiteColor].CGColor];
+//    [self.que push:(__bridge id)[UIColor grayColor].CGColor];
     
-    [self.que push:(__bridge id)[UIColor grayColor].CGColor];
-    [self.que push:(__bridge id)[UIColor grayColor].CGColor];
-    [self.que push:(__bridge id)[UIColor whiteColor].CGColor];
-    [self.que push:(__bridge id)[UIColor grayColor].CGColor];
+    
+    self.queueArr = [[NSMutableArray alloc]init];;
+    
+    [self.queueArr unshift:(__bridge id)[UIColor grayColor].CGColor];
+    [self.queueArr unshift:(__bridge id)[UIColor lightGrayColor].CGColor];
+    [self.queueArr unshift:(__bridge id)[UIColor whiteColor].CGColor];
+    [self.queueArr unshift:(__bridge id)[UIColor grayColor].CGColor];
+    
 //    [self.que push:(__bridge id)[UIColor grayColor].CGColor];
     
 }
@@ -211,35 +239,37 @@
     
     for (int i = 0; i< len + 1 ; i++) {
         
-        id obj = [self.que pop];
-        [self.que push:obj];
+     //   id obj = [self.que pop];
+        id obj = [self.queueArr pop];
+      //  [self.que push:obj];
+        [self.queueArr unshift:obj];
+        
         if (i < len) {
            [arrColor addObject:obj];
         }
     }
    [arrColor insertObject:(__bridge id)[UIColor whiteColor].CGColor atIndex:0];
     
-    NSMutableArray *arrDis = [@[]mutableCopy];
+    NSMutableArray *arrDis = [@[] mutableCopy];
     float m = self.value;
     
     for (int i = 0; i<len; i++) {
         
         [arrDis addObject:@(1 * (1.0/len * (i)))];
-        
-        
     }
     
  
     [arrDis addObject:@(1.0f)];
     
-    NSLog(@"----%@,%@",arrColor,arrDis);
-    NSLog(@"timer %f",_value);
+//    NSLog(@"----%@,%@",arrColor,arrDis);
+//    NSLog(@"timer %f",_value);
     
     self.gradientLayer.startPoint = CGPointMake(_value,0);
     self.gradientLayer.endPoint = CGPointMake(0, 0);
     
     self.gradientLayer.colors = arrColor;
     self.gradientLayer.locations  = arrDis;
+    
 
 //    NSMutableArray *arr = []
     

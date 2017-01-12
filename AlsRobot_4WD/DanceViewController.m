@@ -25,9 +25,35 @@
 @property(nonatomic ,weak)IBOutlet iCarousel *icarousView;
 @property (weak, nonatomic) IBOutlet UIView *progressV;
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTopConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSubConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSubConstraint;
+
 @end
 
+
+
 @implementation DanceViewController
+{
+    UIView *mainV;
+}
+
+-(void)leftButtonClick{
+    
+    
+    [self topDisappearAnimation:^(BOOL finish) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,24 +69,98 @@
     self.progressV.backgroundColor = [UIColor clearColor];
     MusicProgressView *mv = [MusicProgressView musicProgresssView];
     
+    NSLog(@"pprogres----%@",mv);
+    
     mv.frame = self.progressV.bounds;
     
     mv.center = CGPointMake(self.progressV.frame.size.width * 0.5, self.progressV.frame.size.height * 0.5);
     
     [self.progressV addSubview: mv];
     
-    
-    
-    
-    
     [self loadTheme];
-}
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (IBAction)set:(id)sender {
+    
+    mainV = [self.view viewWithTag:1111];
+
+    
     
 }
+
+-(void)topAnimation{
+    [UIView animateWithDuration:0.01 animations:^{
+        self.leftConstraint.constant = 800;
+        self.bottomConstraint.constant = -100;
+        self.topConstraint.constant = -100;
+        [mainV layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
+            self.topConstraint.constant = 0;
+            self.bottomConstraint.constant = 0 ;
+
+            
+            [mainV layoutIfNeeded];
+        } completion:^(BOOL finished) {
+              [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+                  self.leftConstraint.constant = 0;
+                  
+                    [mainV layoutIfNeeded];
+              } completion:nil];
+        }];
+        
+    }];
+}
+
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    if ([[touches anyObject] locationInView: self.view].x > CGRectGetMaxX(self.view.frame)*0.5) {
+//        
+//        [self topDisappearAnimation];
+//        
+//    }else{
+//        [self topAnimation];
+//    }
+//    
+//}
+-(void)topDisappearAnimation:(void(^)(BOOL finish))completion
+{
+    [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear  animations:^{
+        
+        self.leftConstraint.constant = 800;
+        self.bottomConstraint.constant = -100;
+        self.topConstraint.constant = -100;
+        
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+          }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        !completion ? : completion(YES);
+
+    });
+}
+
+-(void)topDisappearAnimation{
+    [self topDisappearAnimation:nil];
+}
+
+
+
+-(void)viewDidAppear:(BOOL)animated{
+
+  
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self topAnimation];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"%s",__func__);
+    [self topDisappearAnimation];
+}
+
+
 
 -(IBAction)resumPlay:(id)sender
 {
@@ -114,57 +214,60 @@
         
         UIImageView *view1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewWidth)];
         UIImageView *view2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, viewWidth*0.5, viewWidth, viewWidth)];
-        UIImageView *view3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, viewWidth*0.5, viewWidth, viewWidth)];
+  //      UIImageView *view3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, viewWidth*0.5, viewWidth, viewWidth)];
         
-
+        //添加播放图标
         UIImageView *view4 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"跳舞_播放.png"]];
         view4.frame = CGRectMake(0, 0, 60, 60);
         view4.center = view1.center;
         [view1 addSubview:view4];
         
-        UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view1.frame)-50, CGRectGetWidth(view1.frame), 33)];
-        lable.text  =@"歌曲名称";
-        lable.textColor = [UIColor whiteColor];
-        [view1 addSubview:lable];
+//        UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view1.frame)-50, CGRectGetWidth(view1.frame), 33)];
+//        lable.text  =@"歌曲名称";
+//        lable.textColor = [UIColor whiteColor];
+//        [view1 addSubview:lable];
         
         //view2.transform = CGAffineTransformMakeRotation(M_PI);
-        
         view2.layer.anchorPoint = CGPointMake(0.5, 1);
-        view3.layer.anchorPoint = CGPointMake(0.5, 1);
+   //     view3.layer.anchorPoint = CGPointMake(0.5, 1);
         
         // view2.layer.anchorPointZ = 2;
-        
-        CATransform3D t = CATransform3DRotate(view2.layer.transform, (120 / 180.0 * M_PI), 1, 0, 0);
-        
-        
+        //旋转倒影
+        CATransform3D t = CATransform3DRotate(view2.layer.transform, (120 / 180.0 * M_PI), 0.9, 0, -0.05);
         
         view2.layer.transform = t;
-        view3.layer.transform = t;
+  //      view3.layer.transform = t;
         
         [view addSubview: view1];
         [view addSubview: view2];
-        [view addSubview: view3];
+ //       [view addSubview: view3];
         
         view.tag = 10;
         
         view1.tag = 1;
         view2.tag = 2;
-        view3.tag = 3;
+  //      view3.tag = 3;
+        
+        view1.layer.cornerRadius = 5;
+        view1.layer.masksToBounds = YES;
+        
+        view2.layer.cornerRadius = 5;
+        view2.layer.masksToBounds = YES;
         
     }
     UIImageView *view1 =[view viewWithTag:1];
     UIImageView *view2 = [view viewWithTag:2];
-    UIImageView *view3 = [view viewWithTag:3];
+  //  UIImageView *view3 = [view viewWithTag:3];
     
        UIImage *image = [UIImage imageNamed:@"跳舞_图"];
     ((UIImageView *)view1).image = image;
  
     
-    UIImage *imageM = [UIImage imageNamed:@"蒙板.png"];
+ //   UIImage *imageM = [UIImage imageNamed:@"蒙板.png"];
     
     ((UIImageView *)view2).image = image;
   //   view3.image = imageM;
-    view3.alpha = 0.5;
+  //  view3.alpha = 0.5;
     
     view2.backgroundColor = [UIColor blackColor];
     view2.alpha = 0.08;
@@ -173,8 +276,8 @@
 }
 
 -(CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform{
-    static CGFloat max_sacle = 1.5f;
-    static CGFloat min_scale = 0.8;
+    static CGFloat max_sacle = 1.3f;
+    static CGFloat min_scale = 0.7;
 
     if (offset <= 1 && offset >= -1) {
         float tempScale = offset < 0 ? 1+offset : 1-offset;
@@ -188,14 +291,14 @@
         transform = CATransform3DScale(transform, min_scale, min_scale, 1);
     }
     
-    NSLog(@"offset %f",offset);
+  //   NSLog(@"offset %f",offset);
 
   //  UIView *viewV = [carousel viewWithTag:10];
     
   //  UIImageView *imageV = [viewV viewWithTag:2];
   //  imageV.hidden = YES;
     
-    return CATransform3DTranslate(transform, offset * self.icarousView.itemWidth * 1.3, 0.0, 0.0);
+    return CATransform3DTranslate(transform, offset * self.icarousView.itemWidth * 1.5, 0.0, 0.0);
 }
 
 
@@ -215,7 +318,7 @@
     {
         NSLog(@"播放文件错误");
     }
-//   [[XYAudio shareXYAudion]addMusicFileURL:URL_AngryBirds];
+    [[XYAudio shareXYAudion]addMusicFileURL:URL_AngryBirds];
 }
 
 
@@ -223,12 +326,13 @@
 {
 
 }
+
+
 //-(CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 //{
 //    option = iCarouselOptionShowBackfaces;
-//    
-//    
 //}
+
 //-(BOOL)carouselShouldWrap:(iCarousel *)carousel
 //{
 //    return YES;
@@ -240,11 +344,13 @@
 //    return [[CubeAnimation alloc]init];
 //}
 //
+
 //- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 //{
 //    return [[CubeAnimation alloc]init];
 //
 //}
+
 //
 //- (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator
 //{

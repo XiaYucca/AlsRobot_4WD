@@ -10,6 +10,7 @@
 
 @interface RootViewController : UIViewController
 
-
+-(void)leftButtonClick;
+-(void)rightButtonClick;
 
 @end

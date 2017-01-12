@@ -12,17 +12,12 @@
 
 #import "XYAudio.h"
 #import "Interpolation.h"
-
-
 #import "mega1280Protect.h"
 #import "Burnerinterfaces.h"
 
 #import "SteeringWheel.h"
 
-
 #import "MusicProgressView.h"
-
-
 
 @interface RootViewController ()
 
@@ -35,14 +30,58 @@
 #define backBtnTag 10
 #define setBtnTag 20
 
+#define HOME_LEFT_TAG 10000
+#define HOME_RIGHT_TAG 10001
+#define HOME_TITLE_BG 10003
+
+
 @implementation RootViewController
 {
 
 }
 
+
+-(void)setupTitle{
+    UIButton *leftBtn = (UIButton *)[self.view viewWithTag:HOME_LEFT_TAG];
+    UIButton *rightBtn = (UIButton *)[self.view viewWithTag:HOME_RIGHT_TAG];
+    [leftBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchDown];
+    [rightBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchDown];
+    
+    [leftBtn addTarget:self action:@selector(titleClickUp:) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn addTarget:self action:@selector(titleClickUp:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+-(void)titleClick: (UIButton*) btn{
+    UIImageView *imv = (UIImageView *)[self.view viewWithTag:HOME_TITLE_BG];
+    if (btn.tag == HOME_LEFT_TAG) {
+        imv.image = [UIImage imageNamed:@"title_background_left_highlighted"];
+    }
+    if (btn.tag == HOME_RIGHT_TAG) {
+        imv.image = [UIImage imageNamed:@"title_background_right_highlighted"];
+    }
+}
+-(void)titleClickUp: (UIButton *) btn{
+    UIImageView *imv = (UIImageView *)[self.view viewWithTag:HOME_TITLE_BG];
+    imv.image = [UIImage imageNamed:@"title_background"];
+    if (btn.tag == HOME_LEFT_TAG) {
+        [self leftButtonClick];
+    }else{
+        [self rightButtonClick];
+    }
+}
+
+-(void)leftButtonClick{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)rightButtonClick{
+
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupView];
+    [self _setupView];
+    [self setupTitle];
 
 //    [self setValue:@1 forKey:@"test"];
 
@@ -64,13 +103,21 @@
    
     });
     */
-    [self test];
+ //   [self test];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+}
+-(void)viewWillDisappear:(BOOL)animated{
+   
 }
 
 Message testRecv()
 {
-    //unsigned char data[8] ={0x1b ,0x01, 0x00 ,0x01 ,0x0e ,0x01 ,0x6b};
+//    unsigned char data[8] ={0x1b ,0x01, 0x00 ,0x01 ,0x0e ,0x01 ,0x6b};
 //    Message m = {data,8};
     printf("testrecive");
     Message m = messageFormatByMessage(messageFromString("AVRISP_2"));
@@ -129,20 +176,19 @@ void testSend(Message m)
 }
 
 
--(void)setupView
+-(void)_setupView
 {
-    UIButton *btn = [self.view viewWithTag:backBtnTag];
-    UIButton *stn = [self.view viewWithTag: setBtnTag];
-    
-    
-    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [stn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *btn = [self.view viewWithTag:backBtnTag];
+//    UIButton *stn = [self.view viewWithTag: setBtnTag];
+//    
+//    
+//    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [stn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     
 //    FaceView *face = [[FaceView alloc]initWithFrame:CGRectMake(50, 50, 300, 300)];
 //    [self.view addSubview:face];
     [[XYAudio shareXYAudion]playMusicAtIndex:0];
 
-    
 }
 
 
@@ -153,13 +199,13 @@ void testSend(Message m)
         case backBtnTag:
             
 //           [sender setDisableAnimation:YES];
-             sender.disableAnimation = YES;
-             [self dismissViewControllerAnimated:YES completion:nil];
+//             sender.disableAnimation = YES;
+//             [self dismissViewControllerAnimated:YES completion:nil];
              break;
             
         case setBtnTag:
             
-            [self setingView];
+ //           [self setingView];
             break;
             
     }

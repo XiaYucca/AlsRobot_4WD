@@ -13,9 +13,15 @@
 @end
 
 #define URL_bj [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"bj" ofType:@"mp3"]]
-#define URL_ok [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"ok" ofType:@"mp3"]]
+#define URL_ok [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"an_old" ofType:@"mp3"]]
 #define URL_ok1 [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"ok1" ofType:@"mp3"]]
 #define URL_an [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"an" ofType:@"mp3"]]
+
+#define URL_open [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"打开大型机械铁" ofType:@"wav"]]
+
+#define URL_close [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"打开有链子的铁门" ofType:@"wav"]]
+
+
 
 @implementation AppDelegate
 
@@ -26,7 +32,8 @@
     [audio addMusicFileURL:URL_an];
     [audio addMusicFileURL:URL_ok];
     [audio addMusicFileURL:URL_ok1];
-    
+    [audio addMusicFileURL:URL_open];
+    [audio addMusicFileURL:URL_close];
    // [audio playMusicAtIndex:0];
 }
 

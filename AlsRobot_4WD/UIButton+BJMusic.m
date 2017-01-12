@@ -56,12 +56,6 @@ static void *enbleAnimate;
 
 }
 
-
-//-(BOOL)getDisableAnimation
-//{
-//
-//}
-
 -(void)setDisableAnimation:(BOOL)disableAnimation
 {
 

@@ -106,7 +106,6 @@
         
         NSURL *url = [change[@"new"]firstObject];
  //       NSLog(@"url --%@",url);
-        
         NSError *error = nil;
         AVAudioPlayer *audio = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
         NSLog(@"avaudioplayer --%@",audio);

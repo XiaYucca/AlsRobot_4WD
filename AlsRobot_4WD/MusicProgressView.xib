@@ -26,17 +26,6 @@
                         <action selector="backBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="mW3-fZ-bcr"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-5N-N2d" userLabel="暂停">
-                    <rect key="frame" x="74" y="19" width="47" height="47"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="47" id="JfZ-NR-Wwx"/>
-                        <constraint firstAttribute="height" constant="47" id="sef-fr-3SB"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="pad_跳舞_暂停"/>
-                    <connections>
-                        <action selector="stopBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="zWY-gw-Qa9"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vJ-O9-1Kq" userLabel="前进">
                     <rect key="frame" x="141" y="25" width="34" height="34"/>
                     <constraints>
@@ -49,21 +38,21 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDD-3y-U2i">
-                    <rect key="frame" x="205" y="39" width="550" height="6"/>
+                    <rect key="frame" x="205" y="40" width="529" height="4"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pad_精度条" translatesAutoresizingMaskIntoConstraints="NO" id="Gpp-h2-FG1">
-                            <rect key="frame" x="0.0" y="0.0" width="550" height="6"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gpp-h2-FG1">
+                            <rect key="frame" x="0.0" y="0.0" width="529" height="4"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="6" id="RJy-G1-2Nf"/>
-                                <constraint firstAttribute="width" constant="550" id="kbx-m3-imG"/>
+                                <constraint firstAttribute="height" constant="4" id="RJy-G1-2Nf"/>
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Gpp-h2-FG1" firstAttribute="top" secondItem="rDD-3y-U2i" secondAttribute="top" id="A8M-Dq-tTk"/>
+                        <constraint firstItem="Gpp-h2-FG1" firstAttribute="centerY" secondItem="rDD-3y-U2i" secondAttribute="centerY" id="ApM-ju-v7d"/>
                         <constraint firstItem="Gpp-h2-FG1" firstAttribute="height" secondItem="rDD-3y-U2i" secondAttribute="height" id="D8Y-da-6hn"/>
-                        <constraint firstItem="Gpp-h2-FG1" firstAttribute="width" secondItem="rDD-3y-U2i" secondAttribute="width" id="bbe-ic-Jxx"/>
+                        <constraint firstAttribute="trailing" secondItem="Gpp-h2-FG1" secondAttribute="trailing" id="aWC-3D-OI7"/>
                         <constraint firstItem="Gpp-h2-FG1" firstAttribute="leading" secondItem="rDD-3y-U2i" secondAttribute="leading" id="o6A-to-gsU"/>
                     </constraints>
                 </view>
@@ -81,7 +70,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7Y-ly-PYI" userLabel="随机">
-                    <rect key="frame" x="785" y="27" width="30" height="30"/>
+                    <rect key="frame" x="764" y="27" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="DKf-5f-ixn"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="l15-jx-8mu"/>
@@ -92,7 +81,7 @@
                     <state key="highlighted" backgroundImage="pad_随机播放_点击"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mc2-5S-xa4" userLabel="单曲">
-                    <rect key="frame" x="835" y="27" width="30" height="30"/>
+                    <rect key="frame" x="814" y="27" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="YJF-Xe-O33"/>
                         <constraint firstAttribute="height" constant="30" id="zvi-ps-jUa"/>
@@ -101,7 +90,7 @@
                     <state key="highlighted" backgroundImage="pad_单曲循环_点击"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eai-cj-oo6" userLabel="重复">
-                    <rect key="frame" x="885" y="27" width="30" height="30"/>
+                    <rect key="frame" x="864" y="27" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="MVO-4i-fI9"/>
                         <constraint firstAttribute="width" constant="30" id="ab8-MU-LcO"/>
@@ -109,8 +98,19 @@
                     <state key="normal" backgroundImage="pad_跳舞_循环"/>
                     <state key="highlighted" backgroundImage="pad_跳舞_循环_点击"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-5N-N2d" userLabel="暂停">
+                    <rect key="frame" x="74" y="19" width="47" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="47" id="JfZ-NR-Wwx"/>
+                        <constraint firstAttribute="height" constant="47" id="sef-fr-3SB"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="pad_跳舞_暂停"/>
+                    <connections>
+                        <action selector="stopBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xf7-CA-Zpb"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Rog-5N-N2d" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1pM-vs-rcb"/>
                 <constraint firstItem="Mc2-5S-xa4" firstAttribute="leading" secondItem="m7Y-ly-PYI" secondAttribute="trailing" constant="20" id="6u6-8S-hqV"/>
@@ -126,6 +126,7 @@
                 <constraint firstItem="m7Y-ly-PYI" firstAttribute="centerY" secondItem="rDD-3y-U2i" secondAttribute="centerY" id="l0h-uV-FDh"/>
                 <constraint firstItem="Fqy-mb-sxL" firstAttribute="centerY" secondItem="rDD-3y-U2i" secondAttribute="centerY" id="oG2-UA-lsH"/>
                 <constraint firstItem="5vJ-O9-1Kq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uBr-yq-FBu"/>
+                <constraint firstAttribute="trailing" secondItem="eai-cj-oo6" secondAttribute="trailing" constant="20" id="uQH-4V-AMY"/>
                 <constraint firstItem="5vJ-O9-1Kq" firstAttribute="leading" secondItem="Rog-5N-N2d" secondAttribute="trailing" constant="20" id="v78-u0-dFz"/>
                 <constraint firstItem="eai-cj-oo6" firstAttribute="leading" secondItem="Mc2-5S-xa4" secondAttribute="trailing" constant="20" id="ypB-h3-MsE"/>
             </constraints>
@@ -138,7 +139,7 @@
                 <outlet property="panGesture" destination="1pg-of-fcI" id="fdl-P6-Htx"/>
                 <outlet property="progressV" destination="rDD-3y-U2i" id="mMF-Hw-i9i"/>
             </connections>
-            <point key="canvasLocation" x="674" y="-356"/>
+            <point key="canvasLocation" x="313" y="-548"/>
         </view>
         <panGestureRecognizer minimumNumberOfTouches="1" id="1pg-of-fcI">
             <connections>
@@ -149,7 +150,6 @@
     </objects>
     <resources>
         <image name="pad_单曲循环_点击" width="30" height="30"/>
-        <image name="pad_精度条" width="550" height="6"/>
         <image name="pad_跳舞_Backward" width="34" height="34"/>
         <image name="pad_跳舞_Forward" width="34" height="34"/>
         <image name="pad_跳舞_单曲循环" width="30" height="30"/>

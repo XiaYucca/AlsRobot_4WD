@@ -44,6 +44,7 @@
     [UIView animateWithDuration:[self transitionDuration:transitionContext]* 0.5 animations:^{
         
         toView.backgroundColor = [UIColor whiteColor];
+        
         toView.transform = CGAffineTransformMakeScale(1, 0.01);
         
     } completion:^(BOOL finished) {
@@ -55,7 +56,9 @@
             
         }completion:^(BOOL finished){
             
-            //  [self removeFromSuperview];
+           //   [self removeFromSuperview];
+            
+            [fromView removeFromSuperview];
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
             
             
@@ -95,6 +98,12 @@
         
     }];
 }
+
+
+
+
+
+
 
 
 

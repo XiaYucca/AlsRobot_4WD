@@ -17,74 +17,218 @@
 
 #import "XYTransiting.h"
 #import "XYTransitingDismiss.h"
+#import "XYAudio.h"
+
+#import "NSMutableArray+Queue.h"
+
+
+
 
 
 @interface HomeViewController ()<UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTopConstraint;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSubConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSubConstraint;
 
 @end
 
-@implementation HomeViewController
+@implementation HomeViewController{
+    BOOL isShow;
+}
+
+-(void)testArr{
+    
+    NSMutableArray *arr = [@[] mutableCopy];
+    [arr unshift:@1];
+    [arr unshift:@2];
+    
+    NSLog(@"%@----%@---%@",[arr pop],[arr pop],[arr pop]);
+    
+    [arr push:@3];
+    [arr push:@4];
+    
+    NSLog(@"%@----%@---%@",[arr pop],[arr pop],[arr pop]);
+}
+
+
+-(void)leftButtonClick{
+ //   [super leftButtonClick];
+}
+
+-(void)rightButtonClick{
+    [super rightButtonClick];
+    
+    [self pressAnimationHide:^{
+        [self custumSetingViewSkip];
+    }];
+}
+
 
 -(void)TitleAnimation
 {
-  
-//    
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
-          self.titleTopConstraint.constant = 50;
-        
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
-    
-//
-   // self.titleTopConstraint.constant = 0;
-//      self.titleTopConstraint.constant = 50;
-//
-//    [UIView animateWithDuration:1 animations:^{
-//        [self.view layoutIfNeeded];
-//
-//    }];
-    
-}
--(void)orginAnimation
-{
-     self.titleTopConstraint.constant = 0;
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+   [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+       if (isShow) {
+           self.titleTopConstraint.constant = 0;
 
+       }else{
+           self.titleTopConstraint.constant = 50;
+       }
+       
         [self.view layoutIfNeeded];
         
     } completion:nil];
 }
+
+-(void)topAnimation{
+    
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+        self.topConstraint.constant = isShow ? 0 : -90;
+
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+
+}
+
+-(void)bottomAnimation{
+
+    if(isShow){
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            
+            self.bottomConstraint.constant = 0;
+            
+            [self.view layoutIfNeeded];
+            
+        } completion:^(BOOL b){
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                self.leftSubConstraint.constant = isShow ? 16 : -200;
+                self.rightSubConstraint.constant =  10;
+                [self.view layoutIfNeeded];
+                
+            } completion:nil];
+            
+        }];
+    }else{
+        [UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+             self.leftSubConstraint.constant = -200;
+             self.rightSubConstraint.constant = 300;
+             [self.view layoutIfNeeded];
+            
+        } completion:^(BOOL b){
+            [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                
+                self.bottomConstraint.constant = -300;
+                [self.view layoutIfNeeded];
+                
+            } completion:nil];
+            
+        }];
+    }
+
+}
+-(void)leftAnimation{
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+        self.leftConstraint.constant = isShow ? -40 : -200;
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+
+}
+
+-(void)tipsAnimation{
+ 
+    [UIView animateWithDuration:2.5 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.tipConstraint.constant = isShow ? -40 : -350;
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:^(BOOL b){
+        
+//        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+//            self.tipConstraint.constant = 0;
+//            
+//            [self.view layoutIfNeeded];
+//            
+//        } completion:nil];
+    }];
+    
+}
+
+-(void) testAnimation {
+   
+    [[XYAudio shareXYAudion]playMusicAtIndex:5];
+
+    [self pressAnimationHide:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [[XYAudio shareXYAudion]playMusicAtIndex:4];
+        [self pressAnimationShow:nil];
+    });
+}
+
+-(void)pressAnimationShow:(void(^)(void))compliment{
+    [[XYAudio shareXYAudion]playMusicAtIndex:4];
+    isShow = YES;
+    [self tipsAnimation];
+    [self topAnimation];
+    [self bottomAnimation];
+    [self leftAnimation];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        !compliment? : compliment();
+    });
+}
+
+-(void)pressAnimationHide:(void(^)(void))compliment{
+    
+    [[XYAudio shareXYAudion]playMusicAtIndex:5];
+    isShow = NO;
+    [self tipsAnimation];
+    [self topAnimation];
+    [self bottomAnimation];
+    [self leftAnimation];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        !compliment? : compliment();
+    });
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
-{
-   // [self TitleAnimation];
+{    NSLog(@"%s",__func__);
+
+        isShow = YES;
+        [self tipsAnimation];
+        [self topAnimation];
+        [self bottomAnimation];
+        [self leftAnimation];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-   // [self TitleAnimation];
+    NSLog(@"%s",__func__);
+ //   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+            isShow = NO;
+            [self tipsAnimation];
+            [self topAnimation];
+            [self bottomAnimation];
+            [self leftAnimation];
+  //  });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    ExperienceProgressView *EV= [ExperienceProgressView experienceProgressView];
-    
-    EV.experienceProgress = 0.5;
-    
-    EV.batteryProgress = 0.15;
-    
-    EV.frame = CGRectMake(0, 0, 240, 72);
-    
-    UIView *exView= [self.view viewWithTag:1000];
-    exView.backgroundColor = [UIColor clearColor];
-    [exView addSubview: EV];
-
+    [self testArr];
 }
 
 
@@ -118,8 +262,9 @@
             break;
         case 100:
             
+         //   [self testAnimation];
             
-            [self custumDanceViewSkip];
+           // [self custumDanceViewSkip];
             
             break;
         case 200:
@@ -191,6 +336,17 @@
     }];
     
     NSLog(@"subView%@",[self.view subviews]);
+}
+
+-(void)custumSetingViewSkip
+{
+    UIViewController *toController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SetingViewController"];
+    
+    toController.transitioningDelegate = self;
+    
+    toController.modalPresentationStyle = UIModalPresentationCustom;
+    
+    [self presentViewController:toController animated:YES completion:nil];
 }
 
 -(void)custumDanceViewSkip
@@ -282,6 +438,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+//
+//-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+//{
+//    NSLog(@"%@",identifier);
+//    NSLog(@"%@",sender);
+//    UIStoryboardSegue *se = [UIStoryboard storyboardWithName:@"main" bundle:[NSBundle mainBundle]]
+//    
+//    if () {
+//        <#statements#>
+//    }
+//    return NO;
+//}
+
 /*
 #pragma mark - Navigation
 
@@ -291,5 +460,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
 
 @end

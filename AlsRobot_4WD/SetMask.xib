@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -56,13 +60,13 @@
                 </button>
                 <activityIndicatorView hidden="YES" opaque="NO" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-hG-3wK">
                     <rect key="frame" x="396" y="49" width="20" height="20"/>
-                    <color key="tintColor" red="0.2339881161" green="0.96435424110000001" blue="0.99919462199999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="color" red="0.2339881161" green="0.96435424110000001" blue="0.99919462199999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.2339881161" green="0.96435424110000001" blue="0.99919462199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="color" red="0.2339881161" green="0.96435424110000001" blue="0.99919462199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text=" 提示:右上角可查看蓝牙状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-7m-eVx">
                     <rect key="frame" x="127" y="228" width="139" height="14"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vO-eh-2s1">
@@ -70,13 +74,13 @@
                     <subviews>
                         <tableView clipsSubviews="YES" alpha="0.5" tag="50" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PzL-Ar-g6d">
                             <rect key="frame" x="0.0" y="44" width="238" height="128"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="PzL-Ar-g6d" firstAttribute="top" secondItem="5vO-eh-2s1" secondAttribute="top" constant="30" id="Er6-kb-fnP"/>
                         <constraint firstAttribute="trailing" secondItem="PzL-Ar-g6d" secondAttribute="trailing" id="Hnu-v2-63r"/>
@@ -85,7 +89,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5vO-eh-2s1" firstAttribute="centerY" secondItem="Tbw-eH-Pnv" secondAttribute="centerY" id="75h-BD-vVg"/>
                 <constraint firstItem="fRc-33-qmL" firstAttribute="top" secondItem="V6b-wy-W0I" secondAttribute="top" id="GSt-6T-IzP"/>
@@ -112,7 +116,6 @@
                 <constraint firstItem="6Ww-bi-aba" firstAttribute="top" secondItem="GMx-dN-yqU" secondAttribute="bottom" constant="5" id="x7L-xd-RIa"/>
                 <constraint firstAttribute="trailing" secondItem="dWP-8N-HNG" secondAttribute="trailing" constant="30" id="zYk-MI-5NV"/>
             </constraints>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="progress" destination="6pk-hG-3wK" id="Gbr-dv-oJk"/>
@@ -129,7 +132,7 @@
         <image name="lanyabj" width="613" height="500"/>
         <image name="lianjie1" width="223" height="60"/>
         <image name="lianjie2" width="223" height="60"/>
-        <image name="set_backImage" width="72" height="72"/>
+        <image name="set_backImage" width="278" height="90"/>
         <image name="souxun1" width="223" height="60"/>
         <image name="souxun2" width="223" height="60"/>
     </resources>

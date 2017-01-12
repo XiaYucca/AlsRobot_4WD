@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C1FDAA9B1CF2B4E500B17366"
-               BuildableName = "&#x5c0f;&#x5965;&#x6d4b;&#x8bd5;&#x7248;.app"
+               BuildableName = "AlsRobot_4WD.app"
                BlueprintName = "AlsRobot_4WD"
                ReferencedContainer = "container:AlsRobot_4WD.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C1FDAA9B1CF2B4E500B17366"
-            BuildableName = "&#x5c0f;&#x5965;&#x6d4b;&#x8bd5;&#x7248;.app"
+            BuildableName = "AlsRobot_4WD.app"
             BlueprintName = "AlsRobot_4WD"
             ReferencedContainer = "container:AlsRobot_4WD.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C1FDAA9B1CF2B4E500B17366"
-            BuildableName = "&#x5c0f;&#x5965;&#x6d4b;&#x8bd5;&#x7248;.app"
+            BuildableName = "AlsRobot_4WD.app"
             BlueprintName = "AlsRobot_4WD"
             ReferencedContainer = "container:AlsRobot_4WD.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C1FDAA9B1CF2B4E500B17366"
-            BuildableName = "&#x5c0f;&#x5965;&#x6d4b;&#x8bd5;&#x7248;.app"
+            BuildableName = "AlsRobot_4WD.app"
             BlueprintName = "AlsRobot_4WD"
             ReferencedContainer = "container:AlsRobot_4WD.xcodeproj">
          </BuildableReference>
